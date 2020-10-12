@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Password Update</title>
+  </head>
+  <body>
+	{% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <div class="container">
+		<form method="post" action="">
+			<label for="newPassword">New Password:</label>
+			<input type="password" name="newPassword" />
+			<label for="confirmPassword">Confirm Password:</label>
+			<input type="password" name="password" />
+			<p class="form-actions">
+				<input type="submit" value="Change Password" />
+			</p>
+		</form>
+    </div>
+  <footer><a href="/logout">Click here to logout</a></footer>
+  </body>
+</html>

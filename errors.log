@@ -1,0 +1,50 @@
+2020-10-12 08:56:52,290 - main - ERROR - Exception on /changepwd [POST]
+Traceback (most recent call last):
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:/Users/adben/PycharmProjects/pythonProject/main.py", line 89, in changepwd
+    elif not is_common(newpwd):
+  File "C:/Users/adben/PycharmProjects/pythonProject/main.py", line 38, in is_common
+    with open("C:\\tmp\\\CommonPassword.txt") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\tmp\\\\CommonPassword.txt'
+2020-10-12 09:01:14,293 - main - ERROR - (127.0.0.1)Passwords do not match.. Please try again
+2020-10-12 09:01:27,620 - main - ERROR - Exception on /changepwd [POST]
+Traceback (most recent call last):
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:/Users/adben/PycharmProjects/pythonProject/main.py", line 89, in changepwd
+    elif not is_common(newpwd):
+  File "C:/Users/adben/PycharmProjects/pythonProject/main.py", line 38, in is_common
+    with open("C:\\User\\adben\\Downloads\\CommonPassword.txt") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\User\\adben\\Downloads\\CommonPassword.txt'
+2020-10-12 10:11:30,553 - main - ERROR - Exception on /logout [GET]
+Traceback (most recent call last):
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
