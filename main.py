@@ -112,9 +112,6 @@ def dalmatian():
     else:
         print("User not logged in")
         return "Error. You need to log in"
-
-
-
 @app.route('/lab')
 def lab():
     """This function returns the labrador page"""

@@ -48,3 +48,4 @@ Traceback (most recent call last):
   File "C:\Users\adben\PycharmProjects\pythonProject\venv\lib\site-packages\flask\app.py", line 2097, in make_response
     raise TypeError(
 TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-10-13 12:17:32,092 - main - ERROR - (127.0.0.1)Passwords do not match.. Please try again
