@@ -12,16 +12,16 @@ app.secret_key = 'abc123'
 
 
 
-def check_pw(pw):
+def check_pw(entered_pw):
     """This funciton checks the password for complexity using regex"""
     # minimum length 8
     minfound = False
     lower_found = False
     upper_found = False
     digit_found = False
-    if len(pw) >= 8:
+    if len(entered_pw) >= 8:
         minfound = True
-        for i in pw:
+        for i in entered_pw:
             if i.islower():
                 lower_found = True
             elif i.isupper():
@@ -46,6 +46,7 @@ def get_current_date():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """This function returns the default registration page"""
     error = None
     if request.method == "POST":
         entered_name = request.form['username']
@@ -60,20 +61,22 @@ def index():
                 f.close()
             session['user'] = entered_name
             return redirect((url_for('welcome')))
-        else:
-            error = "You could not be registered"
+
+        error = "You could not be registered"
     return render_template('register.html', error=error)
 
 @app.route('/welcome')
 def welcome():
+    """This function returns the Welcome page"""
     print(session)
     if 'user' in session:
         return render_template('welcome.html')
     else:
         print("User not logged in")
-        return("Error. You need to log in")
-@app.route('/changepwd', methods=['post','get'])
+        return "Error. You need to log in"
+@app.route('/changepwd', methods=['post', 'get'])
 def changepwd():
+    """This function returns the change password page"""
     message = ''
     if request.method == "POST":
         newpwd = request.form.get('newPassword')
@@ -83,50 +86,59 @@ def changepwd():
             message = "Passwords do not match.. Please try again"
             print(request.remote_addr)
             app.logger.error("(" + request.remote_addr + ")" + message)
-        elif not check_pw(newpwd):
-            message = "Password does not meet complexity standards"
         elif is_common(newpwd):
             message = "password is comonly used. Try again"
+        elif not check_pw(newpwd):
+            message = "Password does not meet complexity standards"
         else:
+            hashed_pw = sha256_crypt.hash(newpwd)
+            with open('passfile.txt', "a") as f:
+                f.writelines(hashed_pw + "\n")
+                f.close()
             return render_template('welcome.html')
     return render_template('changepwd.html', message=message)
 
 @app.route('/logout')
 def logout():
+    """This function returns the logout page"""
     session.pop('user', None)
     return render_template('logout.html')
 @app.route('/dalmatian')
 def dalmatian():
+    """This function returns the dalmatian page"""
     if 'user' in session:
         print(session)
         return render_template('dalmatian.html', get_current_date=get_current_date())
     else:
         print("User not logged in")
-        return ("Error. You need to log in")
+        return "Error. You need to log in"
 
 
 
 @app.route('/lab')
 def lab():
+    """This function returns the labrador page"""
     if 'user' in session:
         return render_template('lab.html')
     else:
         print("User not logged in")
-        return ("Error. You need to log in")
+        return "Error. You need to log in"
 
 
 
 @app.route('/dogTable')
 def dogTable():
+    """This function returns the dog table page"""
     if 'user' in session:
         return render_template('dogTable.html')
     else:
         print("User not logged in")
-        return ("Error. You need to log in")
+        return "Error. You need to log in"
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """This function returns the login page"""
     error = None
     if request.method == "POST":
         #log usernames and passwords to txt file
@@ -154,11 +166,12 @@ def login():
 
 @app.route('/beagle')
 def beagle():
+    """This function returns the beagle page"""
     if 'user' in session:
         return render_template('beagle.html')
     else:
         print("User not logged in")
-        return ("Error. You need to log in")
+        return "Error. You need to log in"
 
 
 
@@ -171,4 +184,3 @@ if __name__ == "__main__":
     handler.setFormatter(formatter)
     app.logger.addHandler(handler)
     app.run()
-
